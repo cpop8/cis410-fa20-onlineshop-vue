@@ -55,7 +55,7 @@ export default {
            axios.post("/contacts", myFormData)
            .then((myResponse)=>{
                //console.log(myResponse)
-               this.$router.replace("/login?signupsuccess=true")
+               this.$router.replace("/signin?signupsuccess=true")
                })
                .catch((myError)=>{
                    if(myError.response.status === 409){

@@ -16,7 +16,7 @@
       </li>
 
       <li class="nav-item">
-        <router-link class="nav-link" to="/login">
+        <router-link class="nav-link" to="/signin">
         <button class='btn btn-warning'>Log In</button>
         </router-link>
       </li>
