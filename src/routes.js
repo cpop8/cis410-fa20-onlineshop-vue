@@ -9,6 +9,7 @@ import ProductDetails from './components/productDetails.vue'
 import Orders from './components/Orders.vue';
 import NotFound from './components/NotFound.vue';
 import SignUp from './components/SignUp.vue';
+//import store from './store.js';
 
 Vue.use(VueRouter);
 

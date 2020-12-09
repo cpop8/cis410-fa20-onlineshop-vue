@@ -42,7 +42,7 @@ export default {
         onSubmit(){
             const myFormData={
                 email: this.email,
-                password: this.password,
+                password: this.password
             };
 
             //console.log("form data:", myFormData)
