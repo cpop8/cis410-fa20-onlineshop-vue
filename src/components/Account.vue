@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <tr v-for="thisOrder in ordersByUser" :key="thisOrder.OrderPK">
-                    <th><router-link :to="`/products/${thisOrder.ProductFK}`">{{thisOrder.productID}}</router-link></th>
+                    <th><router-link :to="`/products/${thisOrder.ProductFK}`">{{thisOrder.ProductID}}</router-link></th>
                     <th>{{thisOrder.Payment}}</th>
                     <th>{{thisOrder.productName}}</th>
                 </tr>
