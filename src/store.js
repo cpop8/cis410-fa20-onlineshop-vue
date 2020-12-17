@@ -45,6 +45,37 @@ export default new Vuex.Store({
             commit('clearAuthData');
 
             routes.replace("/");
+        },
+        tryAutoLogin({commit, dispatch}){
+            const token = localStorage.getItem('token');
+            if(!token){return}
+
+            const expirationDate = new Date(localStorage.getItem('expiration'));
+
+            const now = new Date();
+
+            if(now >= expirationDate){ return}
+
+            commit('storeTokenInApp', token);
+
+            axios.get('/contacts/me', {
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            .then((myResponse)=>{
+                commit('storeUserInApp', myResponse.data);
+                dispatch("setLogoutTimer")
+            })
+        },
+        setLogoutTimer({commit, dispatch}){
+            const expirationDate = new Date(localStorage.getItem('expiration'));
+            const now = new Date();
+            const timeAmount = expirationDate - now;
+
+            setTimeout(()=>{
+                dispatch("logout")
+            }, timeAmount)
         }
     }
 })

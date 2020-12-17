@@ -29,6 +29,7 @@ export default {
 created(){
   console.log("App created")
   this.$store.dispatch("getProducts")
+  this.$store.dispatch("tryAutoLogin")
 }
 }
 </script>
