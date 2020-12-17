@@ -14,7 +14,7 @@
 
 <script>
 
-import Header from "./components/header.vue";
+import Header from "./components/Header.vue";
 
 export default {
   name: 'app',
@@ -25,6 +25,10 @@ export default {
   },
   components:{
     "app-header": Header
+},
+created(){
+  console.log("App created")
+  this.$store.dispatch("getProducts")
 }
 }
 </script>
