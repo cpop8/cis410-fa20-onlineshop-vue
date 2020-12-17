@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import routes from './routes.js';
 
 Vue.use(Vuex);
 
@@ -19,6 +20,10 @@ export default new Vuex.Store({
         },
         storeProducts(state, myProducts){
             state.products = myProducts
+        },
+        clearAuthData(state){
+            state.token = null;
+            state.user = null;
         }
     },
     actions:{
@@ -29,6 +34,17 @@ export default new Vuex.Store({
                 commit('storeProducts', myResponse.data)
             })
             .catch(()=>{console.log("error in getProducts action")})
+        },
+        logout({commit, state}){
+            axios.post('/contacts/logout', null,{
+                headers:{
+                    Authorization: `Bearer ${state.token}`
+                }
+            });
+
+            commit('clearAuthData');
+
+            routes.replace("/");
         }
     }
 })

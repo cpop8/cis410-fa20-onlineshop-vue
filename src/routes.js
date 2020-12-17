@@ -9,13 +9,17 @@ import ProductDetails from './components/productDetails.vue'
 import ReviewCreate from './components/ReviewCreate.vue';
 import NotFound from './components/NotFound.vue';
 import SignUp from './components/SignUp.vue';
-//import store from './store.js';
+import store from './store.js';
 
 Vue.use(VueRouter);
 
 const routes = [
     {path: '/', component: Home},
-    {path: '/account', component: Account},
+    {path: '/account', component: Account, beforeEnter(to, from, next){
+        if(store.state.token)
+            {next()}
+            else{next('/signin')}
+    }},
     {path: '/signin', component: Login},
     {path: '/products', component: Products},
     {path: '/products/:pk', component: ProductDetails,
